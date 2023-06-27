@@ -20,6 +20,7 @@ defineFeature(feature, test => {
       expect(driver.getCurrentRoute()).toEqual('/');
     });
 
+
     and(/^there is an existing todo with the title "(.*)"$/, (arg0) => {
       todo = page.getTodoInViewByName(arg0);
       expect(todo).toBeDefined();

@@ -18,19 +18,7 @@ class TodoDetailPage  {
 
 }
 
-interface GlobalDataModel {
-  todos: TodosState;
-}
 
-export class GlobalCache {
-  constructor (private globalDataModel: GlobalDataModel) {
-
-  }
-
-  public static createEmpty() {
-    return new GlobalCache({ todos: { todos: [] }})
-  }
-}
 
 export type PageType = TodosPage | TodoDetailPage;
 
@@ -202,7 +190,8 @@ export class CompositionRoot {
   }
 
   private createTodosPresenter () {
-    return new TodosPresenter();
+    let globalCache = this.getGlobalCache();
+    return new TodosPresenter(globalCache);
   }
 
   private createTodosController () {
